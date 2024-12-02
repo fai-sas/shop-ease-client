@@ -19,7 +19,7 @@ const RegisterPage = () => {
   const { mutate: handleVendorRegistration, isPending: vendorIsPending } =
     useVendorRegistration()
 
-  const customerOnSubmit = async (data) => {
+  const customerOnSubmit = async (data: any) => {
     const userData = {
       password: data.password,
       customer: {
@@ -31,7 +31,7 @@ const RegisterPage = () => {
     handleCustomerRegistration(userData)
   }
 
-  const vendorOnSubmit = async (data) => {
+  const vendorOnSubmit = async (data: any) => {
     const vendorData = {
       password: data.password,
       vendor: {

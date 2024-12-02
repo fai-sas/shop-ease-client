@@ -23,9 +23,13 @@ import { ImageUploader } from '@/src/components/ImageUploader'
 import FormSelect from '@/src/components/form/FormSelect'
 import { useUser } from '@/src/context/user.provider'
 import { useCreateProduct } from '@/src/hooks/product.hook'
+import { useGetAllCategories } from '@/src/hooks/category.hook'
 
 export default function AddProduct() {
   const { user } = useUser()
+
+  const { data, isLoading, isError } = useGetAllCategories()
+  const categories = data?.data || []
 
   const {
     mutate: handleCreateProduct,
@@ -33,32 +37,36 @@ export default function AddProduct() {
     isSuccess,
   } = useCreateProduct()
 
-  const categoryOptions = [
-    { key: 'Web', label: 'Web' },
-    { key: 'Software Engineering', label: 'Software Engineering' },
-    { key: 'AI', label: 'AI' },
-    { key: 'Data Science', label: 'Data Science' },
-  ]
-
-  const premiumOptions = [
-    { key: 'true', label: 'Yes' },
-    { key: 'false', label: 'No' },
-  ]
+  const categoryOptions = categories.map((category: any) => {
+    return {
+      key: category.categoryId,
+      label: category.name,
+    }
+  })
 
   const methods = useForm({
     defaultValues: {
-      title: '',
+      name: '',
       description: '',
+      price: 0,
+      discount: 0,
+      inventory: 0,
       images: [],
-      category: 'Web',
-      isPremium: false,
+      categoryId: '',
+      isDeleted: false,
     },
   })
 
   const { handleSubmit, setValue } = methods
 
   const onSubmit: SubmitHandler<FieldValues> = (productData) => {
+    productData.price = parseFloat(productData.price) || 0
+    productData.discount = parseFloat(productData.discount) || 0
+    productData.inventory = parseInt(productData.inventory, 10) || 0
     productData.vendorId = user?.email
+    // productData.categoryId = productData.category
+
+    console.log(productData)
 
     handleCreateProduct(productData)
   }
@@ -110,7 +118,7 @@ export default function AddProduct() {
               <div className='flex-1 min-w-fit'>
                 <FormSelect
                   label='Category'
-                  name='category'
+                  name='categoryId'
                   options={categoryOptions}
                 />
               </div>

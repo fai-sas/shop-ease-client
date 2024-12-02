@@ -5,14 +5,33 @@
 import { FieldValues } from 'react-hook-form'
 
 import axiosInstance from '../lib/AxiosInstance'
+import axios from 'axios'
 
-export const createProduct = async (postData: FieldValues): Promise<any> => {
+// export const createProduct = async (productData: FieldValues): Promise<any> => {
+//   try {
+//     const res = await axiosInstance.post('/products', productData)
+
+//     return res.data
+//   } catch (error: any) {
+//     throw new Error(error)
+//   }
+// }
+
+export const createProduct = async (productData: FieldValues): Promise<any> => {
   try {
-    const res = await axiosInstance.post('/products', postData)
+    const res = await axiosInstance.post('/products', productData)
 
     return res.data
   } catch (error: any) {
-    throw new Error(error)
+    if (axios.isAxiosError(error)) {
+      console.error('Axios error:', error.response?.data || error.message)
+      throw new Error(
+        error.response?.data?.message || 'An unexpected error occurred'
+      )
+    } else {
+      console.error('Unexpected error:', error)
+      throw new Error('An unexpected error occurred')
+    }
   }
 }
 
