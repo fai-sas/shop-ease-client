@@ -8,6 +8,7 @@ const AuthRoutes = ['/login', '/register']
 
 const roleBasedRoutes = {
   USER: [/^\/dashboard/],
+  VENDOR: [/^\/vendor-dashboard/],
   ADMIN: [/^\/admin-dashboard/],
 }
 
