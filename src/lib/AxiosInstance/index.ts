@@ -2,7 +2,7 @@ import axios from 'axios'
 import { cookies } from 'next/headers'
 
 import envConfig from '@/src/config/envConfig'
-import { getNewAccessToken } from '@/src/services/Auth'
+import { getNewAccessToken } from '@/src/services/auth.service'
 
 const axiosInstance = axios.create({
   baseURL: envConfig.baseApi,
