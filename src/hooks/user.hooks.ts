@@ -4,6 +4,8 @@ import toast from 'react-hot-toast'
 import {
   getAllUsers,
   getAllVendors,
+  getCustomerProfile,
+  getMyProfile,
   getSingleUser,
   getSingleVendor,
 } from '../services/user.service'
@@ -33,5 +35,19 @@ export const useGetSingleVendor = (vendorId: string) => {
   return useQuery({
     queryKey: ['SINGLE_VENDOR', vendorId],
     queryFn: async () => await getSingleVendor(vendorId),
+  })
+}
+
+export const useGetMyProfile = () => {
+  return useQuery({
+    queryKey: ['MY_PROFILE'],
+    queryFn: async () => await getMyProfile(),
+  })
+}
+
+export const useGetCustomerProfile = () => {
+  return useQuery({
+    queryKey: ['CUSTOMER_PROFILE'],
+    queryFn: async () => await getCustomerProfile(),
   })
 }

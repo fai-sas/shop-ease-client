@@ -18,7 +18,9 @@ export const useCreateCart = () => {
     mutationKey: ['CREATE_CART'],
     mutationFn: async (cartData) => await createCart(cartData),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['ALL_CARTS'] })
+      queryClient.invalidateQueries({
+        queryKey: ['ALL_CARTS', 'CUSTOMER_PROFILE'],
+      })
       toast.success('Product Added to Cart Successfully')
     },
     onError: (error) => {

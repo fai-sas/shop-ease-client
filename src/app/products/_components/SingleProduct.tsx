@@ -1,10 +1,9 @@
 import { Image } from '@nextui-org/image'
 import React from 'react'
 import { Chip } from '@nextui-org/chip'
+import AddToCart from './AddtoCart'
 
 const SingleProduct = ({ product }: any) => {
-  console.log(product)
-
   return (
     <>
       <section className='grid grid-cols-1 gap-4 md:grid-cols-2'>
@@ -21,6 +20,7 @@ const SingleProduct = ({ product }: any) => {
           <Chip color='secondary'>{product?.category?.name}</Chip>
           <h1 className='text-xl font-bold '>{product?.name}</h1>
           <h1 className=' text-md'>$ {product?.price}</h1>
+          <AddToCart productId={product?.productId} />
         </article>
       </section>
     </>

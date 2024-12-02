@@ -48,3 +48,25 @@ export const getSingleVendor = async (vendorId: string) => {
     throw new Error('Failed to fetch data')
   }
 }
+
+export const getMyProfile = async () => {
+  try {
+    const res = await axiosInstance.get('/users/my-profile')
+
+    return res.data
+  } catch (error) {
+    console.error('Failed to fetch data:', error)
+    throw new Error('Failed to fetch data')
+  }
+}
+
+export const getCustomerProfile = async () => {
+  try {
+    const res = await axiosInstance.get('/users/customer-profile')
+
+    return res.data
+  } catch (error) {
+    console.error('Failed to fetch data:', error)
+    throw new Error('Failed to fetch data')
+  }
+}

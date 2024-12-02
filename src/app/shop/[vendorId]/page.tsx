@@ -16,8 +16,6 @@ const ShopDetailsPage = ({ params: { vendorId } }: TProps) => {
 
   const vendor = data?.data
 
-  console.log(data)
-
   return (
     <>
       <div>
