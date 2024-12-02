@@ -35,7 +35,8 @@ const FormController = ({
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={submitHandler(onSubmit)}>{children}</form>
+      {/* <form onSubmit={submitHandler(onSubmit)}>{children}</form> */}
+      <form onSubmit={methods.handleSubmit(onSubmit)}>{children}</form>
     </FormProvider>
   )
 }
