@@ -30,7 +30,7 @@ export const useCreateProduct = () => {
 
 export const useGetAllProducts = () => {
   return useQuery({
-    queryKey: ['CREATE_PRODUCTS'],
+    queryKey: ['ALL_PRODUCTS'],
     queryFn: async () => await getAllProducts(),
   })
 }
