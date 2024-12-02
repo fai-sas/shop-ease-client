@@ -7,8 +7,7 @@ import {
   useEffect,
   useState,
 } from 'react'
-
-import { getCurrentUser } from '../services/Auth'
+import { getCurrentUser } from '../services/auth.service'
 
 interface IUserProviderValues {
   user: any | null
