@@ -98,7 +98,7 @@ export const deleteProduct = async (productId: string): Promise<any> => {
 
 export const searchProducts = async (search: string) => {
   try {
-    const res = await axiosInstance.get(`/products?search=${search}`)
+    const res = await axiosInstance.get(`/products?searchTerm=${search}`)
 
     return res.data
   } catch (error: any) {

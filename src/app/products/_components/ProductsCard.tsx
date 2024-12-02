@@ -3,16 +3,9 @@ import { Image } from '@nextui-org/image'
 import Link from 'next/link'
 
 const ProductsCard = ({ product }) => {
-  console.log(product)
-
   return (
     <>
-      <Card
-        shadow='sm'
-        key={product?.productId}
-        isPressable
-        onPress={() => console.log('item pressed')}
-      >
+      <Card shadow='sm' key={product?.productId}>
         <CardBody className='p-0 overflow-visible'>
           <Link href={`/products/${product?.productId}`}>
             <Image

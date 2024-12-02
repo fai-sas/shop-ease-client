@@ -17,6 +17,7 @@ const SingleProduct = ({ product }: any) => {
           src={product?.images[0]}
         />
         <article className='space-y-4 '>
+          <Chip color='primary'>{product?.vendor?.name}</Chip>
           <Chip color='secondary'>{product?.category?.name}</Chip>
           <h1 className='text-xl font-bold '>{product?.name}</h1>
           <h1 className=' text-md'>$ {product?.price}</h1>
